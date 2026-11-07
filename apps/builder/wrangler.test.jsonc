@@ -1,0 +1,14 @@
+{
+  "name": "maps-to-website-builder-test",
+  "main": "./test-entry.ts",
+  "compatibility_date": "2026-11-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": { "APP_ENV": "development", "PLACES_LOOKUP_ENABLED": "false", "UPLOADS_ENABLED": "false", "PLACES_ASSERTION_SECRET": "test-only-fixture-key-not-for-deployments", "LOCAL_OPERATOR_TOKEN": "test-only-fixture-operator-token", "ALLOWED_RELEASE_HOSTS": "fixture.example", "RELEASE_SERVICE_TOKEN": "test-only-service-token-must-be-over-32-chars", "LIVE_DEPLOY_ENABLED": "false" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "maps-to-website-test", "database_id": "test-only", "migrations_dir": "migrations" }
+  ],
+  "r2_buckets": [
+    { "binding": "MEDIA", "bucket_name": "maps-to-website-test-media" },
+    { "binding": "RELEASES", "bucket_name": "maps-to-website-test-releases" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "projectId": "fixture-export",
+  "siteType": "service-area",
+  "theme": "grove",
+  "businessName": "Northstar Home Care",
+  "serviceSummary": "Reliable home repairs across the peninsula.",
+  "locality": "Portland, Maine",
+  "serviceArea": "Portland and nearby coastal communities",
+  "contact": {
+    "type": "phone",
+    "label": "Call Northstar",
+    "href": "tel:+12075550192"
+  },
+  "services": [],
+  "about": "Synthetic export smoke fixture.",
+  "testimonials": [],
+  "assets": []
+}

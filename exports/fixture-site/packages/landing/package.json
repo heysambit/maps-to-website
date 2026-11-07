@@ -1,0 +1,16 @@
+{
+  "name": "@studio/landing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./LandingPage.astro": "./src/components/LandingPage.astro"
+  },
+  "scripts": {
+    "check": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@studio/contracts": "workspace:*"
+  }
+}

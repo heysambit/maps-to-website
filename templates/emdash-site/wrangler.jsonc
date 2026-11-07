@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "studio-emdash-site-template",
+  "main": "./src/worker.ts",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "studio-emdash-site-local",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "studio-emdash-site-local" }],
+  "kv_namespaces": [{ "binding": "SESSION", "id": "00000000000000000000000000000000" }],
+  "vars": {
+    "CMS_ENABLED": "false",
+    "ADMIN_BOOTSTRAP_ENABLED": "false",
+		"OWNER_ADMIN_ACTIVE": "false",
+    "CUTOVER_ENABLED": "false",
+    "OWNER_ACCESS_ENABLED": "false",
+    "FINAL_HOST": "",
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUDIENCE": "",
+    "OWNER_EMAIL": ""
+  }
+}

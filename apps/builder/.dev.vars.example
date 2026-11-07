@@ -1,0 +1,16 @@
+# No secrets are needed for fixture mode.
+APP_ENV=development
+DEMO_IDENTITY=demo-operator
+PLACES_LOOKUP_ENABLED=false
+UPLOADS_ENABLED=false
+# Local HMAC only. Replace through a secret manager before any authorized staging verification.
+PLACES_ASSERTION_SECRET=local-fixture-signing-key-do-not-deploy
+LOCAL_OPERATOR_TOKEN=local-only-demo-token-not-for-deploy
+# GOOGLE_PLACES_API_KEY is intentionally absent; real lookup remains disabled.
+# Cloudflare Access is not contacted in local fixture mode. Configure these only in an authorized Cloudflare environment.
+ACCESS_TEAM_DOMAIN=
+OPERATOR_ACCESS_AUD=
+REVIEWER_ACCESS_AUD=
+OPERATOR_HOST=
+REVIEWER_HOST=
+OPERATOR_EMAILS=

@@ -1,0 +1,13 @@
+{
+  "name": "@studio/site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "astro build"
+  },
+  "dependencies": {
+    "@studio/contracts": "workspace:*",
+    "@studio/landing": "workspace:*",
+    "astro": "7.4.7"
+  }
+}

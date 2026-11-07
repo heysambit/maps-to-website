@@ -1,0 +1,77 @@
+---
+import type { RenderModel } from '@studio/contracts';
+
+interface Props { model: RenderModel; inert?: boolean; }
+const { model, inert = false } = Astro.props;
+const storefront = model.siteType === 'storefront';
+---
+<div class="landing" data-theme={model.theme} data-site-type={model.siteType}>
+  <main>
+    <header class="hero">
+      <p class="eyebrow">{storefront ? model.locality : `${model.locality} · Service area`}</p>
+      <h1>{model.businessName}</h1>
+      <p class="summary">{model.serviceSummary}</p>
+      <a class="primary-action" href={inert ? undefined : model.contact.href} aria-disabled={inert ? 'true' : undefined} tabindex={inert ? -1 : undefined}>{model.contact.label}</a>
+    </header>
+
+    {model.assets.length > 0 && <section class="media" aria-label="Photos">
+      {model.assets.map((asset) => <img src={asset.src} alt={asset.alt} width={asset.width} height={asset.height} loading="lazy" />)}
+    </section>}
+
+    {model.services.length > 0 && <section aria-labelledby="services-title">
+      <h2 id="services-title">Services</h2>
+      <ul>{model.services.map((service) => <li>{service}</li>)}</ul>
+    </section>}
+
+    {model.about && <section aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p>{model.about}</p>
+    </section>}
+
+    {model.testimonials.length > 0 && <section aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title">Testimonials</h2>
+      <ul>{model.testimonials.map((quote) => <li>{quote}</li>)}</ul>
+    </section>}
+
+    <section class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      {storefront && model.address && <address>{model.address}</address>}
+      {!storefront && model.serviceArea && <p>Serving {model.serviceArea}</p>}
+      {model.hours && <p>Hours: {model.hours}</p>}
+      <a href={inert ? undefined : model.contact.href} aria-disabled={inert ? 'true' : undefined} tabindex={inert ? -1 : undefined}>{model.contact.label}</a>
+    </section>
+  </main>
+  <footer><p>{model.businessName} · {model.locality}</p></footer>
+</div>
+
+<style>
+  .landing {
+    --page: #fffbf4;
+    --ink: #172033;
+    --action: #1d4ed8;
+    --on-action: #fff;
+    min-height: 100vh;
+    background: var(--page);
+    color: var(--ink);
+    font: 16px/1.6 system-ui, sans-serif;
+  }
+  .landing[data-theme='grove'] { --page: #f4faf5; --ink: #142b20; --action: #166534; }
+  main, footer { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+  main { padding-block: clamp(2.5rem, 7vw, 5rem); }
+  .hero { max-width: 48rem; padding-block: 1rem 3rem; }
+  .eyebrow { font-size: .875rem; font-weight: 600; letter-spacing: .04em; }
+  h1 { max-width: 14ch; margin: .25em 0; font-size: clamp(2.25rem, 7vw, 4.5rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.2; }
+  .summary { max-width: 42rem; font-size: clamp(1.125rem, 2vw, 1.35rem); }
+  .primary-action { display: inline-flex; min-height: 44px; align-items: center; padding: .625rem 1rem; border-radius: .5rem; background: var(--action); color: var(--on-action); font-weight: 700; text-decoration-thickness: .1em; text-underline-offset: .2em; }
+  a { color: var(--action); }
+  .primary-action:focus-visible, a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+  section { max-width: 52rem; padding-block: clamp(2rem, 5vw, 4rem); border-top: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); }
+  li + li { margin-top: .5rem; }
+  address { font-style: normal; }
+  .media { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; }
+  .media img { width: 100%; height: auto; border-radius: .75rem; }
+  footer { padding-block: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); }
+  @media (min-width: 48rem) { main, footer { width: min(100% - 4rem, 72rem); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
+</style>

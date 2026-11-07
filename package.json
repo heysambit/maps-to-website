@@ -1,0 +1,43 @@
+{
+  "name": "maps-to-website",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.34.9",
+  "engines": {
+    "node": "22.23.4",
+    "pnpm": "10.34.9"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @studio/builder dev",
+    "check": "pnpm --filter @studio/contracts check && pnpm --filter @studio/landing check && pnpm --filter @studio/builder check && pnpm --filter @studio/site check && pnpm --filter @studio/emdash-site typecheck && tsc --noEmit -p tsconfig.json && pnpm run scan:secrets",
+    "test": "vitest run tests/unit",
+    "test:integration": "pnpm --filter @studio/site build && node scripts/assert-landing-fixtures.mjs && vitest run --config vitest.integration.config.ts tests/integration",
+    "test:e2e": "playwright test",
+    "build": "pnpm --filter @studio/builder build && pnpm --filter @studio/site build && pnpm --filter @studio/emdash-site build",
+    "release": "node scripts/release/cli.mjs",
+    "release:export": "node scripts/release/export.mjs",
+    "retention:dry-run": "node scripts/retention/dry-run.mjs",
+    "scan:secrets": "node scripts/scan-secrets.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@cloudflare/vitest-plugin": "1.6.0",
+    "@cloudflare/workers-types": "5.20261104.1",
+    "@playwright/test": "1.65.0",
+    "@types/node": "26.0.0",
+    "@types/react": "19.2.13",
+    "@types/react-dom": "19.2.3",
+    "typescript": "6.0.3",
+    "vitest": "5.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd"
+    ],
+    "overrides": {
+      "@emnapi/runtime": "1.11.3"
+    }
+  },
+  "type": "module"
+}

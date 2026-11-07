@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: var(--dash-primary);
+  --color-on-primary: var(--dash-on-primary);
+  --color-danger: var(--dash-danger);
+  --color-success: var(--dash-success);
+}
+
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  --dash-canvas:#f5f7fb; --dash-surface:#fff; --dash-ink:#172033; --dash-muted:#475569;
+  --dash-border:#cbd5e1; --dash-control:#64748b; --dash-primary:#1d4ed8; --dash-on-primary:#fff;
+  --dash-success:#166534; --dash-warning:#92400e; --dash-danger:#b91c1c;
+}
+[data-dashboard-theme="dark"] {
+  color-scheme: dark;
+  --dash-canvas:#0f172a; --dash-surface:#172033; --dash-ink:#f8fafc; --dash-muted:#cbd5e1;
+  --dash-border:#475569; --dash-control:#94a3b8; --dash-primary:#93c5fd; --dash-on-primary:#0f172a;
+  --dash-success:#86efac; --dash-warning:#fcd34d; --dash-danger:#fca5a5;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--dash-canvas); color: var(--dash-ink); }
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 2px solid var(--dash-primary); outline-offset: 2px; }
+.editor-columns { display: grid; gap: 1rem; }
+.editor-panel[data-state="inactive"] { display: none; }
+.google-maps-attribution { display: block; max-width: 100%; }
+@media (min-width: 64rem) {
+  .editor-columns { grid-template-columns: minmax(360px, 440px) minmax(0, 1fr); align-items: start; }
+  .editor-panel[data-state="inactive"] { display: block !important; }
+  .editor-panel:has(.preview-card) { position: sticky; top: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "meta": { "name": "Purchased site", "description": "Schema only; customer content requires a paid, approved release.", "author": "Maps to Website" },
+  "settings": { "title": "Purchased site", "tagline": "" },
+  "collections": [{
+    "slug": "landing_pages", "label": "Landing pages", "labelSingular": "Landing page", "urlPattern": "/",
+    "supports": ["drafts", "revisions", "preview", "seo"],
+    "fields": [{ "slug": "render_model", "label": "Approved site content", "type": "json", "required": true }]
+  }],
+  "content": { "landing_pages": [] }
+}

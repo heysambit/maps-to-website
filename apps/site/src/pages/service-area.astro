@@ -1,0 +1,17 @@
+---
+import { sealRevision, toRenderModel } from '@studio/contracts';
+import LandingPage from '@studio/landing/LandingPage.astro';
+import { serviceAreaDraft } from '../../../../tests/fixtures/drafts';
+
+const model = await toRenderModel(await sealRevision(serviceAreaDraft));
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={model.serviceSummary} />
+    <title>{model.businessName} | {model.locality}</title>
+  </head>
+  <body><LandingPage model={model} /></body>
+</html>

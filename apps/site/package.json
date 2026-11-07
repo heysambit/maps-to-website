@@ -1,0 +1,19 @@
+{
+  "name": "@studio/site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "astro check",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "@studio/contracts": "workspace:*",
+    "@studio/landing": "workspace:*",
+    "astro": "7.4.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "typescript": "6.0.3"
+  }
+}

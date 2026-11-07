@@ -1,0 +1,14 @@
+---
+import { getEmDashEntry } from "emdash";
+import LandingPage from "@studio/landing/LandingPage.astro";
+import Base from "../layouts/Base.astro";
+import { publicRenderModel } from "../lib/public-model";
+
+const { entry, cacheHint } = await getEmDashEntry("landing_pages", "home");
+const model = publicRenderModel(entry?.data.render_model);
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+---
+
+<Base title={model?.businessName ?? "Purchased site"} description={model?.serviceSummary ?? ""}>
+	{model ? <LandingPage model={model} /> : <p>This site is not configured.</p>}
+</Base>
